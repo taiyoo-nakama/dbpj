@@ -9,7 +9,13 @@ class PersonController extends Controller
 {
     public function index(Request $request)
     {
-        $items = DB::select('select * from people');
-        return view('index', ['items' => $items]);
+        $items = DB::table('people')->get();
+        return view('index',['items'=>$items]);
+    }
+    public function show(Request $request)
+    {
+        $id = $request->id;
+        $item = DB::table('people')->where('id',$id)->first();
+        return view('show',['item'=>$item]);
     }
 }
