@@ -9,6 +9,7 @@
     border:1px solid black;
     padding:5px 30px;
     text-align:center;
+    color:black;
   }
   button{
     padding:10px 20px;

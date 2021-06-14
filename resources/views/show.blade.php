@@ -14,6 +14,8 @@
 @section('title','show.blade.php')
 
 @section('content')
+@if($items != null)
+@foreach($items as $item)
 <table>
   <tr>
   <th>id</th>
@@ -28,4 +30,6 @@
     <td>{{$item->age}}</td>
   </tr>
 </table>
+@endforeach
+@endif
 @endsection

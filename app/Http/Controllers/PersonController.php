@@ -14,8 +14,8 @@ class PersonController extends Controller
     }
     public function show(Request $request)
     {
-        $id = $request->id;
-        $item = DB::table('people')->where('id',$id)->first();
-        return view('show',['item'=>$item]);
+        $param = $request->param;
+        $items = DB::table('people')->where('name','like','%'.$param.'%')
+        return view('show',['items' => $items]);
     }
 }
