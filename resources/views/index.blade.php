@@ -17,20 +17,12 @@
 @section('content')
 <table>
   <tr>
-    <th>id</th>
-    <th>name</th>
-    <th>age</th>
+    <th>Data</th>
   </tr>
   @foreach ($items as $item)
   <tr>
     <td>
-      {{$item->id}}
-    </td>
-    <td>
-      {{$item->name}}
-    </td>
-    <td>
-      {{$item->age}}
+      {{$item->getData()}}
     </td>
   </tr>
   @endforeach

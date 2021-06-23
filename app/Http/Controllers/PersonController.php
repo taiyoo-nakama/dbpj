@@ -2,20 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Person;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PersonController extends Controller
 {
     public function index(Request $request)
     {
-        $items = DB::table('people')->get();
+        $items = Person::all();
         return view('index',['items'=>$items]);
     }
-    public function show(Request $request)
+    public function find(Request $request)
     {
-        $param = $request->param;
-        $items = DB::table('people')->where('name','like','%'.$param.'%')->orWhere('age','like','%'.$param.'%')->get();
-        return view('show',['items' => $items]);
+        return view('find',['input'=>'']);
+    }
+    public function search(Request $request)
+    {
+        $min = $request->input * 1;
+        $max = $min + 10;
+        $item = Person::ageGreaterThen($min)->ageLessThen($max)->first();
+        $param = [
+            'input' => $request->input,
+            'item' => $item
+        ];
+        return view('find',$param);
+    }
+    public function add(Request $Request)
+    {
+        return view('add');
+    }
+    public function create(Request $request)
+    {
+        $this->validate($request,Person::$rules);
+        $person = new Person;
+        $form = $request->all();
+        unset($form['_token_']);
+        $person->fill($form)->save();
+        return redirect('/');
     }
 }
