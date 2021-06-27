@@ -11,18 +11,22 @@
       text-align: center;
     }
 </style>
-@section('title', 'index.blade.php')
+@section('title', 'board.index.blade.php')
 
 
 @section('content')
 <table>
   <tr>
-    <th>Data</th>
+    <th>Message</th>
+    <th>Name</th>
   </tr>
   @foreach ($items as $item)
   <tr>
     <td>
-      {{$item->getData()}}
+      {{$item->message}}
+    </td>
+    <td>
+      {{$item->person->name}}
     </td>
   </tr>
   @endforeach
