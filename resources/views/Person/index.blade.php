@@ -20,14 +20,14 @@
   <th>Person</th>
   <th>Board</th>
   </tr>
-  @foreach($items as $item)
+  @foreach($hasItems as $items)
   <tr>
     <td>
-    {{$item->getData()}}
+    {{$items->getData()}}
     </td>
     <td>
     <table>
-    @foreach($item->boards as $obj)
+    @foreach($items->boards as $obj)
     <tr>
       <td>{{$obj->getData()}}</td>
       </tr>

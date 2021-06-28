@@ -20,7 +20,7 @@
     <th>Message</th>
     <th>Name</th>
   </tr>
-  @foreach ($items as $item)
+  @foreach ($items as $noItems)
   <tr>
     <td>
       {{$item->message}}
