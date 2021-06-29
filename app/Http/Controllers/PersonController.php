@@ -9,10 +9,8 @@ use Illuminate\Http\Request;
 {
     public function index(Request $request)
     {
-        $hasItems = Person::has('boards')->get();
-        $noItems = Person::doesntHave('boards')->get();
-        $param = ['hasItems' => $hasItems, 'noItems' => $noItems];
-        return view('person.index',$param);
+            $item = DB::table('people')->simplePaginate(5);
+            return view('index',['items'=>$items]);
     }
     public function find(Request $request)
     {
@@ -29,7 +27,7 @@ use Illuminate\Http\Request;
         ];
         return view('find',$param);
     }
-    public function add(Request $Request)
+    public function add(Request $request)
     {
         return view('add');
     }

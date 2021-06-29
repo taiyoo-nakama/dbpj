@@ -32,7 +32,7 @@
       <td>{{$obj->getData()}}</td>
       </tr>
        @endforeach
-      </table>
+    </table>
       </td>
     </tr>
     @endforeach
@@ -47,4 +47,5 @@
       </tr>
       @endforeach
     </table>
+    
 @endsection
