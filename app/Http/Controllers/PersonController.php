@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 {
     public function index(Request $request)
     {
-            $items = DB::table('people')->simplePaginate(5);
-            return view('index',['items'=>$items]);
+        $items = Person::simplePaginate(5);
+        return view('index',['items'=>$items]);
     }
     public function find(Request $request)
     {
