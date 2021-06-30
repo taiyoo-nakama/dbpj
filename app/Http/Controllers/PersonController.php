@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 {
     public function index(Request $request)
     {
-            $item = DB::table('people')->simplePaginate(5);
+            $items = DB::table('people')->simplePaginate(5);
             return view('index',['items'=>$items]);
     }
     public function find(Request $request)
