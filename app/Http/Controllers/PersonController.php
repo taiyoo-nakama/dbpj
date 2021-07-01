@@ -4,13 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
    class PersonController extends Controller
 {
     public function index(Request $request)
     {
-        $items = Person::simplePaginate(5);
-        return view('index',['items'=>$items]);
+        $user = Auth::user();
+        if(!$request->sort){
+            $sort = 'id';
+        }else{
+            $sort = $request->sort;
+        }
+        $items = Person::orderBy($sort,'asc')->paginate(5);
+        $param = ['items' => $items,'sort' => $sort];
+        return view('index',$param);
     }
     public function find(Request $request)
     {
