@@ -18,10 +18,10 @@ Route::post('/delete', [PersonController::class, 'remove']);
 Route::get('/board', [BoardController::class, 'index']);
 Route::get('/board/add', [BoardController::class, 'add']);
 Route::post('/board/add', [BoardController::class, 'create']);
-Route::get('/person', [PersonController::class, 'index']);
+Route::get('/person', [PersonController::class, 'index'])->middleware('auth');
 Route::get('/session', [SessionController::class, 'ses_get']);
 Route::post('/session', [SessionController::class, 'ses_put']);
-Route::get('/person', [PersonController::class, 'index'])->middleware('auth');
+
 
 /*
 |--------------------------------------------------------------------------
