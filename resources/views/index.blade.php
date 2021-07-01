@@ -20,8 +20,7 @@
 
 @section('content')
 @if(Auth::check())
-Route::get('/person', [PersonController::class, 'index'])->middleware('auth');
-
+<p>USER: {{$user->name . ' (' . $user->email . ')'}}</p>
 @else
 <p>※ログインしていません(<a href="/login">ログイン</a>｜<a href="/register">登録</a>)</p>
 @endif
