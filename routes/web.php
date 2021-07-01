@@ -21,7 +21,8 @@ Route::post('/board/add', [BoardController::class, 'create']);
 Route::get('/person', [PersonController::class, 'index'])->middleware('auth');
 Route::get('/session', [SessionController::class, 'ses_get']);
 Route::post('/session', [SessionController::class, 'ses_put']);
-
+Route::get('person/auth',[PersonController::class,'getAuth']);
+Route::post('person/auth',[PersonController::class,'postAuth']);
 
 /*
 |--------------------------------------------------------------------------
