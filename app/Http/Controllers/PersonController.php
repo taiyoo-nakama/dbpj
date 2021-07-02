@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
             $sort = $request->sort;
         }
         $items = Person::orderBy($sort,'asc')->paginate(5);
-        $param = ['items' => $items,'sort' => $sort];
+        $param = ['items' => $items,'sort' => $sort,'user' => $user];
         return view('index',$param);
     }
     public function find(Request $request)
