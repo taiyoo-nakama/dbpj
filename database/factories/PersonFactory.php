@@ -15,9 +15,4 @@ class PersonFactory extends Factory
             'age' => $this->faker->numberBetween(1,100),
         ];
     }
-    public function definition(){
-        return [
-            'name' => $this->faker->randomNumber(19),
-        ];
-    }
 }

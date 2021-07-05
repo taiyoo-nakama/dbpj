@@ -35,6 +35,10 @@ Route::get('softdelete/store',function(){
     $result = Person::onlyTrashed()->restore();
     echo $result;
 });
+Route::get('softdelete/absolute',function(){
+    $person = Person::onlyTrashed()->forceDelete();
+    echo $person;
+});
 
 /*
 |--------------------------------------------------------------------------
