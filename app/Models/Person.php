@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
-use App\Scopes\ScopePerson;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class Person extends Model
 {
+    use SoftDeletes;
     use HasFactory;
     protected $guarded = array('id');
     public static $rules = array(
@@ -25,18 +25,13 @@ class Person extends Model
     {
         return $query->where('name',$str);
     }
-    public function scopeAgeGreaterThen($query,$n)
-    {
-        return $query->where('age','>=',$n);
-    }
-    public function scopeAgeLessThen($query,$n)
+    public function scopeAgeGreaterThan($query,$n)
     {
         return $query->where('age','<=',$n);
     }
-    protected static function boot()
+    public function scopeAgeLessThan($query,$n)
     {
-        parent::boot();
-        static::addGlobalScope(new ScopePerson);
+        return $query->where('age','<=',$n);
     }
     public function board(){
         return $this->hasOne('App\Models\Board');
