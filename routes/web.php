@@ -27,6 +27,14 @@ Route::post('person/auth',[PersonController::class,'postAuth']);
 Route::get('/softdelete',function(){
     Person::find(1)->delete();
 });
+Route::get('softdelete/get',function(){
+    $person = Person::onlyTrashed()->get();
+    dd($person);
+});
+Route::get('softdelete/store',function(){
+    $result = Person::onlyTrashed()->restore();
+    echo $result;
+});
 
 /*
 |--------------------------------------------------------------------------
